@@ -2,6 +2,9 @@
 
 ### This is a guide for building and deploying an integration app for using whatsapp throw twilio
 
-##### Steps:
+##### PHP development enviroment:
 
-1.
+1. Install PHP if not installed.
+2. Start new project with Composer
+   - Go to project directory and add command:
+     `composer init --require=twilio/sdk`
