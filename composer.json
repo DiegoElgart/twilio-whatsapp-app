@@ -1,0 +1,12 @@
+{
+    "name": "diego/twilio-whatsapp-app",
+    "require": {
+        "twilio/sdk": "^6.28"
+    },
+    "authors": [
+        {
+            "name": "DiegoElgart",
+            "email": "diegojelgart@gmail.com"
+        }
+    ]
+}
