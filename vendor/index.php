@@ -17,20 +17,17 @@
       </form>
 <?php
 
-$numbers=json_encode(array($_POST["numbers"]));
-$links=array($_POST["links"]);
+
+$numbers=explode("\r\n", $_POST["numbers"]);
+$links=explode("\r\n",$_POST["links"]);
 $message=array($_POST["message"]);
 
 
-/*
-print_r($numbers);
-print_r($links);
-print_r($message);
-*/
-//$package=array_merge($numbers,$links,$message);
 
-echo $numbers;
-//print_r($package);
+print_r ($numbers);
+echo '<br>';
+echo '<br>';
+print_r($links);
 
 ?>
 
