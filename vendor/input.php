@@ -24,11 +24,11 @@ $message=array($_POST["message"]);
 
 $numbers=preg_replace("/05/","+9725", $numbers1, 1);
 
-print_r ($numbers);
+/*print_r ($numbers);
 echo '<br>';
 echo '<br>';
 print_r($links);
-
+*/
 ?>
 
   </body>

@@ -8,4 +8,4 @@
 2. Start new project with Composer
    - Go to project directory and add command:
      `composer init --require=twilio/sdk`
-3. Declare your Global Keys: "TWILIO_ACCOUNT_SID" & "TWILIO_AUTH_TOKEN"
+3. Declare your Enviromental Keys: "TWILIO_ACCOUNT_SID" & "TWILIO_AUTH_TOKEN"
