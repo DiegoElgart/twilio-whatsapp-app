@@ -18,11 +18,11 @@
 <?php
 
 
-$numbers=explode("\r\n", $_POST["numbers"]);
+$numbers1=explode("\r\n", $_POST["numbers"]);
 $links=explode("\r\n",$_POST["links"]);
 $message=array($_POST["message"]);
 
-
+$numbers=preg_replace("/05/","+9725", $numbers1, 1);
 
 print_r ($numbers);
 echo '<br>';
