@@ -7,7 +7,7 @@
     <title>Testing for using HTML in same project</title>
   </head>
   <body>
-      <form action="index.php" method="post"><br>
+      <form action="input.php" method="post"><br>
       Numbers: <textarea type="text" name="numbers"> </textarea><br>
       Links: <textarea type="text" name="links"></textarea> <br>
       Message: <textarea type="text" name="message"></textarea><br><br>
@@ -18,9 +18,10 @@
 <?php
 
 
-$numbers1=explode("\r\n", $_POST["numbers"]);
-$links=explode("\r\n",$_POST["links"]);
-$message=array($_POST["message"]);
+//Ternary is for handling error of empty array
+$numbers1=explode("\r\n", $_POST["numbers"]?? "");
+$links=explode("\r\n",$_POST["links"]??"");
+$message=array($_POST["message"]?? "");
 
 $numbers=preg_replace("/05/","+9725", $numbers1, 1);
 
