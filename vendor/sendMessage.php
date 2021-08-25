@@ -32,5 +32,6 @@ $message = $twilio->messages
               
 
 print($message->sid);
+$client->setLogLevel('debug');
 }
 ?>
