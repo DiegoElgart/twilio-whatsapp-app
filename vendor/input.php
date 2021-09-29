@@ -59,7 +59,7 @@ $token = getenv("TWILIO_AUTH_TOKEN");
 
 
 
-
+print_r($numbers);
 //if validation is ok
 
 if($ok){
@@ -71,32 +71,27 @@ $message = $twilio->messages
                   ->create("whatsapp:$numbers[$i]", // to
                            [
                                "from" => "whatsapp:+14155238886",
-                               "body" => "$message + 
-                                $links[$i]",
+                               "body" => "$message 
+                                $links[$i]"
                                
                               
                            ]
                   );
               
-
 print($message->sid);
-$client->setLogLevel('debug');
+//$client->setLogLevel('debug');
+/*
 $feedback = $twilio->messages($sid)
 ->feedback
 ->create();
-
-print($feedback->messageSid);
-}
-
-}
-}
-/*
-print_r($numbers1);
-echo '<br>';
-print_r($links);
-echo '<br>';
-print_r ($message);
 */
+
+print(json_encode($message));
+
+}
+}
+}
+
 
   ?>
 
