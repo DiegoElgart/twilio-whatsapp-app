@@ -20,10 +20,11 @@ $token = getenv("TWILIO_AUTH_TOKEN");
 //Define variables and set to empty values
   $numbersErr = '';
   $linksErr = '';
-  $messageErr = '';
+  $textErr = '';
   
   
   // When submit checks if fields are filled, if not prints an error
+
 
   if (isset($_POST['submit'])){
     $ok=true;
@@ -43,50 +44,48 @@ $token = getenv("TWILIO_AUTH_TOKEN");
       $links=array_filter(explode("\r\n",$_POST["links"]??""));
      };
 
-     if(!isset($_POST['message']) || $_POST['message']==''){
+     if(!isset($_POST['text']) || $_POST['text']==''){
        $ok=false;
-       $messageErr="Please write a message to send";
+       $textErr="Please write a message to send";
      }else{
-      $message= $_POST["message"]?? "";
+      $text= $_POST["text"]?? "";
      }
 
   
-  
-  
-  
-
-  
-
-
-
-print_r($numbers);
 //if validation is ok
 
 if($ok){
 
-for($i=0; $i<= count($numbers);$i++){
-
-$twilio = new Client($sid, $token);
+  
+  
+  $twilio = new Client($sid, $token);
+  
+  for($i=0; $i<= count($numbers); $i++){
 $message = $twilio->messages
+
                   ->create("whatsapp:$numbers[$i]", // to
                            [
                                "from" => "whatsapp:+14155238886",
-                               "body" => "$message 
+                               "body" => "$text 
                                 $links[$i]"
                                
                               
                            ]
                   );
               
+echo '<br>';
+echo "sid: ";
 print($message->sid);
-//$client->setLogLevel('debug');
-/*
-$feedback = $twilio->messages($sid)
-->feedback
-->create();
-*/
 
-print(json_encode($message));
+echo '<br>';
+echo "status: ";
+print($message->status);
+
+echo '<br>';
+echo "errorMessage: ";
+print($message->errorMessage);
+
+//print(json_encode($message));
 
 }
 }
@@ -104,8 +103,8 @@ print(json_encode($message));
       Links: <textarea type="text" name="links"></textarea>
       <span class="error">* <?php echo $linksErr;?></span>
   <br><br>
-      Message: <textarea type="text" name="message"></textarea>
-      <span class="error">* <?php echo $messageErr;?></span>
+      Text: <textarea type="text" name="text"></textarea>
+      <span class="error">* <?php echo $textErr;?></span>
   <br><br>
       <input type="submit" name="submit">
 
