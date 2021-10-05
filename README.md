@@ -9,3 +9,4 @@
    - Go to project directory and add command:
      `composer init --require=twilio/sdk`
 3. Declare your Enviromental Keys: "TWILIO_ACCOUNT_SID" & "TWILIO_AUTH_TOKEN"
+4. Deploy the code and try it.
