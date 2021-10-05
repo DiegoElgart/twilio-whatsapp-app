@@ -35,12 +35,11 @@ $message = $twilio->messages
                   );
               
 $messageSid = $message->sid;
-                  $feedback = $twilio ->messages($messageSid)
-                  ->feedback
-                  ->create();
 
-print($feedback);
-                  //header('Content-Type: application/json');
+array_push($sid_array, $messageSid);
+print_r($sid_array);
+//header('Content-Type: application/json');
+
 /*
 echo '<br>';
 echo "sid: ";

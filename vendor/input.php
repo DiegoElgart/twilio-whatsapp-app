@@ -51,28 +51,37 @@ $token = getenv("TWILIO_AUTH_TOKEN");
       $text= $_POST["text"]?? "";
      }
 
-  
+   
 //if validation is ok
 
 if($ok){
 
   
-  
   $twilio = new Client($sid, $token);
   
-  for($i=0; $i<= count($numbers); $i++){
+  $sid_array=[];
+  for($i=0; $i< count($numbers); $i++){
 $message = $twilio->messages
 
                   ->create("whatsapp:$numbers[$i]", // to
                            [
                                "from" => "whatsapp:+14155238886",
                                "body" => "$text 
-                                $links[$i]"
+                                $links[$i]",
+                                "statusCallback" => "https://www.ipanel.co.il/surveyinterface/CallBack.php"
                                
                               
                            ]
                   );
               
+                  $messageSid = $message->sid;
+
+                  
+                  array_push($sid_array, $messageSid);
+                }
+                //print_r($sid_array);
+               
+
 echo '<br>';
 echo "sid: ";
 print($message->sid);
@@ -81,13 +90,10 @@ echo '<br>';
 echo "status: ";
 print($message->status);
 
-echo '<br>';
+/*echo '<br>';
 echo "errorMessage: ";
 print($message->errorMessage);
-
-//print(json_encode($message));
-
-}
+*/
 }
 }
 
@@ -95,7 +101,7 @@ print($message->errorMessage);
   ?>
 
 
-      <form action="" method="post"><br>
+      <form action="https://www.ipanel.co.il/surveyinterface/CallBack.php" method="post"><br>
 
       Numbers: <textarea type="text" name="numbers"></textarea>
       <span class="error">* <?php echo $numbersErr;?></span>
